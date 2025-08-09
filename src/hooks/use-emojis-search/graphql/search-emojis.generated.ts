@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import type { DocumentNode } from "graphql"
 
 import type * as Types from "@/utils/graphql/types.generated"
