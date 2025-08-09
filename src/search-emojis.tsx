@@ -1,5 +1,4 @@
 import { Action, ActionPanel, Clipboard, closeMainWindow, Grid, Icon, showToast, Toast } from "@raycast/api"
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { Buffer } from "node:buffer"
 import fs from "node:fs/promises"
 import os from "node:os"
@@ -12,6 +11,7 @@ import type { Emoji } from "@/hooks/use-emojis-search"
 import { useEmojisSearch } from "@/hooks/use-emojis-search"
 import { SearchEmojiOrder } from "@/utils/graphql/types.generated"
 import { URLS } from "@/utils/urls"
+import { Providers } from "./components/providers"
 
 function SearchEmojisList() {
   const [searchText, setSearchText] = useState("")
@@ -95,12 +95,10 @@ function SearchEmojisList() {
   )
 }
 
-const queryClient = new QueryClient()
-
 export default function Command() {
   return (
-    <QueryClientProvider client={queryClient}>
+    <Providers>
       <SearchEmojisList />
-    </QueryClientProvider>
+    </Providers>
   )
 }
